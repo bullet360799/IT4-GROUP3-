@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dark Fashion — Split Hero</title>
+    <style>
+      :root {
+        --bg: #0b0b0b;
+        --muted: #bdbdbd;
+        --accent: #ffffff;
+        --glass: rgba(255, 255, 255, 0.04);
+        --gap: 24px;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--accent);
+      }
+
+      /* NAV */
+      .nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+        backdrop-filter: blur(4px);
+      }
+      .nav .logo {
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .nav .menu {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      /* HERO SPLIT */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 78vh;
+      }
+      .pane {
+        position: relative;
+        overflow: hidden;
+      }
+      .pane img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .overlay-left {
+        align-items: flex-start;
+        padding-left: 8%;
+      }
+      .overlay-right {
+        align-items: flex-end;
+        padding-right: 8%;
+      }
+
+      .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--muted);
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+      }
+      .title {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      /* center separator */
+      .split-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      .circle-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.16);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .circle-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* scroll indicator */
+      .scroll-ind {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 8vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .scroll-ind .dot {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* below hero section */
+      .brand-section {
+        padding: 72px 8%;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.25),
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+      .brand-section h2 {
+        margin: 0 0 28px 0;
+        text-align: center;
+        font-size: 28px;
+      }
+      .features {
+        display: flex;
+        gap: 28px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .feature {
+        width: 220px;
+        text-align: center;
+      }
+      .feature .icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: var(--glass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+      }
+      .feature p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* footer */
+      footer {
+        padding: 36px 8%;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* small screens */
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .split-center {
+          display: none;
+        }
+        .overlay-left,
+        .overlay-right {
+          align-items: center;
+          padding: 0 6%;
+        }
+        .title {
+          font-size: 28px;
+        }
+        .nav {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo">darkfashion</div>
+      <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Pages</a>
+        <a href="#">Gallery</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" aria-label="Hero: For Women and For Men">
+        <div class="pane left">
+          <img src="pics/moderno-2310427039.jpg" alt="Woman — fashion" />
+          <div class="overlay overlay-left">
+            <div class="label">Casual Jacket</div>
+            <h1 class="title">For Women</h1>
+          </div>
+        </div>
+
+        <div class="pane right">
+          <img
+            src="pics/moderno-2310724532.jpg"
+            alt="Man — fashion"
+            style="object-position: center right"
+          />
+          <div class="overlay overlay-right">
+            <div class="label">Formal Blazers</div>
+            <h1 class="title">For Men</h1>
+          </div>
+        </div>
+
+        <div class="split-center" aria-hidden="true">
+          <div class="circle-btn">◀</div>
+          <div class="circle-btn">▶</div>
+        </div>
+
+        <div class="scroll-ind">
+          <div class="dot">Scroll</div>
+          <div
+            style="
+              writing-mode: vertical-rl;
+              color: var(--muted);
+              font-size: 12px;
+            "
+          >
+            01<br />02<br />03
+          </div>
+        </div>
+      </section>
+
+      <section class="brand-section">
+        <h2>Fashion &amp; Design Company</h2>
+        <div class="features">
+          <div class="feature">
+            <div class="icon">✂</div>
+            <h3 style="margin: 8px 0 6px 0">Cutting-Edge</h3>
+            <p>Modern silhouettes crafted with precision.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">🤝</div>
+            <h3 style="margin: 8px 0 6px 0">Hand Stitched</h3>
+            <p>Quality materials and detailed finishing.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">🚚</div>
+            <h3 style="margin: 8px 0 6px 0">Worldwide Shipping</h3>
+            <p>Delivering to fashion lovers across the globe.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+          "
+        >
+          <div>&copy; <strong>Dark Fashion</strong> — All rights reserved</div>
+          <div>Designed with ❤️</div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
